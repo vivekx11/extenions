@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Personal Finance Calculator",
+  "version": "1.0.0",
+  "description": "Complete personal finance calculator suite for budgeting, investments, loans, and tax planning",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Personal Finance Calculator"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
