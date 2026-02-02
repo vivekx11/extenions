@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <svg class="header-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+                <div>
+                    <h1>Finance Calculator</h1>
+                    <p>Your complete financial planning toolkit</p>
+                </div>
+                <button class="history-btn" id="history-btn" title="View History">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="budget">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19,3H5C3.9,3 3,3.9 3,5V19C3,20.1 3.9,21 5,21H19C20.1,21 21,20.1 21,19V5C21,3.9 20.1,3 19,3M19,19H5V5H19V19Z"/>
+                </svg>
+                Budget
+            </button>
+            <button class="tab-btn" data-tab="tax">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5,6H23V18H5V6M14,9A3,3 0 0,1 17,12A3,3 0 0,1 14,15A3,3 0 0,1 11,12A3,3 0 0,1 14,9M9,8A2,2 0 0,1 7,10V14A2,2 0 0,1 9,16H19A2,2 0 0,1 21,14V10A2,2 0 0,1 19,8H9Z"/>
+                </svg>
+                Tax
+            </button>
+            <button class="tab-btn" data-tab="investment">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/>
+                </svg>
+                Investment
+            </button>
+            <button class="tab-btn" data-tab="loan">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+                </svg>
+                Loan
+            </button>
+        </nav>
+
+        <!-- Budget & Planning Tab -->
+        <div class="tab-content active" id="budget">
+            <div class="calculator-grid">
+                <div class="calc-card" data-calc="budget-planner">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3,3V21H21V19H5V3H3M9,17H7V10H9V17M13,17H11V7H13V17M17,17H15V13H17V17Z"/>
+                    </svg>
+                    <h3>Budget Planner</h3>
+                    <p>Plan your monthly budget</p>
+                </div>
+                <div class="calc-card" data-calc="savings-goal">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
+                    </svg>
+                    <h3>Savings Goal</h3>
+                    <p>Calculate savings timeline</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tax & Savings Tab -->
+        <div class="tab-content" id="tax">
+            <div class="calculator-grid">
+                <div class="calc-card" data-calc="gst">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                    </svg>
+                    <h3>GST Calculator</h3>
+                    <p>Calculate GST amounts</p>
+                </div>
+                <div class="calc-card" data-calc="income-tax">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20,6C20.58,6 21.05,6.2 21.42,6.59C21.8,7 22,7.45 22,8V19C22,19.55 21.8,20 21.42,20.41C21.05,20.8 20.58,21 20,21H4C3.42,21 2.95,20.8 2.58,20.41C2.2,20 2,19.55 2,19V8C2,7.45 2.2,7 2.58,6.59C2.95,6.2 3.42,6 4,6H8V4C8,3.42 8.2,2.95 8.58,2.58C8.95,2.2 9.42,2 10,2H14C14.58,2 15.05,2.2 15.42,2.58C15.8,2.95 16,3.42 16,4V6H20M4,8V19H20V8H4M14,6V4H10V6H14Z"/>
+                    </svg>
+                    <h3>Income Tax</h3>
+                    <p>Calculate tax liability</p>
+                </div>
+                <div class="calc-card" data-calc="ppf">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M5,5V19H19V5H5M7,7H17V9H7V7M7,11H17V13H7V11M7,15H13V17H7V15Z"/>
+                    </svg>
+                    <h3>PPF Calculator</h3>
+                    <p>Public Provident Fund</p>
+                </div>
+                <div class="calc-card" data-calc="fd">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5,6H23V18H5V6M14,9A3,3 0 0,1 17,12A3,3 0 0,1 14,15A3,3 0 0,1 11,12A3,3 0 0,1 14,9M9,8A2,2 0 0,1 7,10V14A2,2 0 0,1 9,16H19A2,2 0 0,1 21,14V10A2,2 0 0,1 19,8H9Z"/>
+                    </svg>
+                    <h3>FD Calculator</h3>
+                    <p>Fixed Deposit returns</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Investment Tab -->
+        <div class="tab-content" id="investment">
+            <div class="calculator-grid">
+                <div class="calc-card" data-calc="sip">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16,6L18.29,8.29L13.41,13.17L9.41,9.17L2,16.59L3.41,18L9.41,12L13.41,16L19.71,9.71L22,12V6H16Z"/>
+                    </svg>
+                    <h3>SIP Calculator</h3>
+                    <p>Systematic Investment Plan</p>
+                </div>
+                <div class="calc-card" data-calc="lumpsum">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19,7H22V9H19V12H17V9H14V7H17V4H19V7M12,2C13.1,2 14,2.9 14,4C14,5.1 13.1,6 12,6C10.9,6 10,5.1 10,4C10,2.9 10.9,2 12,2M21,9V20C21,21.1 20.1,22 19,22H5C3.9,22 3,21.1 3,20V9H1V7H23V9H21Z"/>
+                    </svg>
+                    <h3>Lumpsum</h3>
+                    <p>One-time investment</p>
+                </div>
+                <div class="calc-card" data-calc="compound">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+                    </svg>
+                    <h3>Compound Interest</h3>
+                    <p>Power of compounding</p>
+                </div>
+                <div class="calc-card" data-calc="cagr">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3,3V21H21V19H5V3H3M9,17H7V10H9V17M13,17H11V7H13V17M17,17H15V13H17V17Z"/>
+                    </svg>
+                    <h3>CAGR Calculator</h3>
+                    <p>Annual growth rate</p>
+                </div>
+                <div class="calc-card" data-calc="retirement">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,3L2,12H5V20H19V12H22L12,3M12,8.75A2.25,2.25 0 0,1 14.25,11A2.25,2.25 0 0,1 12,13.25A2.25,2.25 0 0,1 9.75,11A2.25,2.25 0 0,1 12,8.75M12,15C13.5,15 16.5,15.75 16.5,17.25V18H7.5V17.25C7.5,15.75 10.5,15 12,15Z"/>
+                    </svg>
+                    <h3>Retirement Planner</h3>
+                    <p>Plan your retirement</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loan Tab -->
+        <div class="tab-content" id="loan">
+            <div class="calculator-grid">
+                <div class="calc-card" data-calc="emi">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/>
+                    </svg>
+                    <h3>EMI Calculator</h3>
+                    <p>Monthly installments</p>
+                </div>
+                <div class="calc-card" data-calc="loan-comparison">
+                    <svg class="calc-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9,17H7V10H9V17M13,17H11V7H13V17M17,17H15V13H17V17M19.5,19.1H4.5V5H19.5V19.1M19.5,3H4.5C3.4,3 2.5,3.9 2.5,5V19.1C2.5,20.2 3.4,21.1 4.5,21.1H19.5C20.6,21.1 21.5,20.2 21.5,19.1V5C21.5,3.9 20.6,3 19.5,3Z"/>
+                    </svg>
+                    <h3>Loan Comparison</h3>
+                    <p>Compare loan options</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator Modal -->
+        <div class="modal" id="calculator-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title"></h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Calculator content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- History Modal -->
+        <div class="modal" id="history-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Calculation History</h2>
+                    <div class="header-actions">
+                        <button class="clear-history-btn" id="clear-history-btn" title="Clear History">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"/>
+                            </svg>
+                        </button>
+                        <button class="close-btn">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body" id="history-body">
+                    <div class="empty-history">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13,3A9,9 0 0,0 4,12H1L4.89,15.89L4.96,16.03L9,12H6A7,7 0 0,1 13,5A7,7 0 0,1 20,12A7,7 0 0,1 13,19C11.07,19 9.32,18.21 8.06,16.94L6.64,18.36C8.27,20 10.5,21 13,21A9,9 0 0,0 22,12A9,9 0 0,0 13,3Z"/>
+                        </svg>
+                        <p>No calculations yet</p>
+                        <small>Your calculation history will appear here</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
