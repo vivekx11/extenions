@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Extension Icons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .icon-container {
+            margin: 20px;
+            display: inline-block;
+        }
+        canvas {
+            border: 2px solid #ddd;
+            margin: 10px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .instructions {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Generate Extension Icons</h1>
+    <p>This will create the required PNG icon files for your Chrome extension.</p>
+    
+    <div class="icon-container">
+        <canvas id="icon16" width="16" height="16"></canvas>
+        <div>16x16</div>
+    </div>
+    
+    <div class="icon-container">
+        <canvas id="icon48" width="48" height="48"></canvas>
+        <div>48x48</div>
+    </div>
+    
+    <div class="icon-container">
+        <canvas id="icon128" width="128" height="128"></canvas>
+        <div>128x128</div>
+    </div>
+    
+    <br>
+    <button onclick="generateIcons()">🚀 Generate & Download Icons</button>
+    
+    <div class="instructions">
+        <h3>📋 Instructions:</h3>
+        <ol>
+            <li><strong>Click the button above</strong> to generate and download 3 PNG files</li>
+            <li><strong>Save the files</strong> to the <code>icons/</code> folder in your extension directory</li>
+            <li><strong>Go to Chrome</strong> → <code>chrome://extensions/</code></li>
+            <li><strong>Enable Developer Mode</strong> (toggle in top-right)</li>
+            <li><strong>Click "Load unpacked"</strong> and select your extension folder</li>
+            <li><strong>Your extension is ready!</strong> 🎉</li>
+        </ol>
+    </div>
+
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            
+            // Fill background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Add rupee symbol
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${Math.floor(size * 0.7)}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('₹', size/2, size/2);
+            
+            return canvas;
+        }
+        
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        function generateIcons() {
+            // Create icons
+            const canvas16 = createIcon('icon16', 16);
+            const canvas48 = createIcon('icon48', 48);
+            const canvas128 = createIcon('icon128', 128);
+            
+            // Download with delays to prevent browser blocking
+            setTimeout(() => downloadCanvas(canvas16, 'icon16.png'), 100);
+            setTimeout(() => downloadCanvas(canvas48, 'icon48.png'), 300);
+            setTimeout(() => downloadCanvas(canvas128, 'icon128.png'), 500);
+            
+            setTimeout(() => {
+                alert('✅ Icons generated successfully!\n\n📁 Check your Downloads folder for:\n• icon16.png\n• icon48.png\n• icon128.png\n\n📋 Move these files to the icons/ folder in your extension directory.');
+            }, 700);
+        }
+        
+        // Generate preview icons on page load
+        window.onload = function() {
+            createIcon('icon16', 16);
+            createIcon('icon48', 48);
+            createIcon('icon128', 128);
+        };
+    </script>
+</body>
+</html>
